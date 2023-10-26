@@ -1,0 +1,47 @@
+﻿@model database.Models.SinhVien
+
+
+<div>
+    <h4>Bạn có chắc chắn muốn xóa sinh viên này?</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ht)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diem)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "SinhVien", new { id = Model.ma }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" id="confirmDelete" value="Xóa" class="btn btn-danger" />
+        <a href="@Url.Action("IndexSV")" class="btn btn-default">Hủy</a>
+    }
+</div>
+<script>
+    document.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); //
+            document.getElementById('confirmDelete').click(); /
+        }
+    });
+</script>

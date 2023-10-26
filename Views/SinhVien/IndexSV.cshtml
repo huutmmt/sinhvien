@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Danh sách sinh viên";
+}
+@model List<database.Models.SinhVien>
+<a href="@Url.Action("Create")" class="btn btn-primary">Thêm</a>
+<h2>Danh sách sinh viên</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã </th>
+            <th>Họ tên </th>
+            <th>Điểm</th>
+       
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sv in Model)
+        {
+            <tr>
+                <td>@sv.ma</td>
+                <td>@sv.ht</td>
+                <td>@sv.diem</td>
+                <td>
+                    @Html.ActionLink("Xóa", "Delete", new { id = sv.ma }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Sửa", "Edit", new { id = sv.ma }, new { @class = "btn btn-danger" })
+                </td>
+
+ 
+
+            </tr>
+        }
+    </tbody>
+</table>

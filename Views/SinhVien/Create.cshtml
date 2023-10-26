@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+@model database.Models.SinhVien
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Thêm Sinh Viên</h2>
+
+@using (Html.BeginForm("Create", "SinhVien", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ht, "Họ tên")
+        @Html.TextBoxFor(model => model.ht, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ht)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.diem, "Điểm")
+        @Html.TextBoxFor(model => model.diem, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.diem)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a href="@Url.Action("IndexSV")" class="btn btn-default">Quay lại</a>
+}
